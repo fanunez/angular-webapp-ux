@@ -2,6 +2,7 @@
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "version": 1,
     "cli": {
+      "analytics": "ac0de6a7-37a1-408f-9354-7ffc873332f7",
         "defaultCollection": "@angular-eslint/schematics",
         "cache": {
             "enabled": false
