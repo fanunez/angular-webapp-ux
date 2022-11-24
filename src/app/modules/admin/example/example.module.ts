@@ -6,6 +6,27 @@ const exampleRoutes: Route[] = [
     {
         path     : '',
         component: ExampleComponent
+    },
+    // change modules
+    {
+        path     : '/account',
+        component: ExampleComponent
+    },
+    {
+        path     : '/historial',
+        component: ExampleComponent
+    },
+    {
+        path     : '/transfer',
+        component: ExampleComponent
+    },
+    {
+        path     : '/pay-bills',
+        component: ExampleComponent
+    },
+    {
+        path     : '/pay-services',
+        component: ExampleComponent
     }
 ];
 

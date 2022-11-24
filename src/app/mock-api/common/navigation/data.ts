@@ -3,37 +3,152 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
-        id   : 'example',
-        title: 'Example',
+        id   : 'account',
+        title: 'Mis cuentas',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    }
+        link : '/account'
+    },
+    {
+        id   : 'historial',
+        title: 'Historial',
+        type : 'basic',
+        icon : 'heroicons_outline:clipboard',
+        link : '/historial'
+    },
+    {
+        id   : 'transfer',
+        title: 'Transferir',
+        type : 'basic',
+        icon : 'heroicons_outline:credit-card',
+        link : '/transfer'
+    },
+    {
+        id   : 'bills',
+        title: 'Pago de facturas',
+        type : 'basic',
+        icon : 'heroicons_outline:calculator',
+        link : '/pay-bills'
+    },
+    {
+        id   : 'services',
+        title: 'Pago de servicios',
+        type : 'basic',
+        icon : 'heroicons_outline:cash',
+        link : '/pay-services'
+    },
 ];
 export const compactNavigation: FuseNavigationItem[] = [
     {
-        id   : 'example',
-        title: 'Example',
+        id   : 'account',
+        title: 'Mis cuentas',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    }
+        link : '/account'
+    },
+    {
+        id   : 'historial',
+        title: 'Historial',
+        type : 'basic',
+        icon : 'heroicons_outline:clipboard',
+        link : '/historial'
+    },
+    {
+        id   : 'transfer',
+        title: 'Transferir',
+        type : 'basic',
+        icon : 'heroicons_outline:credit-card',
+        link : '/transfer'
+    },
+    {
+        id   : 'bills',
+        title: 'Pago de facturas',
+        type : 'basic',
+        icon : 'heroicons_outline:calculator',
+        link : '/pay-bills'
+    },
+    {
+        id   : 'services',
+        title: 'Pago de servicios',
+        type : 'basic',
+        icon : 'heroicons_outline:cash',
+        link : '/pay-services'
+    },
+    
 ];
 export const futuristicNavigation: FuseNavigationItem[] = [
     {
-        id   : 'example',
-        title: 'Example',
+        id   : 'account',
+        title: 'Mis cuentas',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    }
+        link : '/account'
+    },
+    {
+        id   : 'historial',
+        title: 'Historial',
+        type : 'basic',
+        icon : 'heroicons_outline:clipboard',
+        link : '/historial'
+    },
+    {
+        id   : 'transfer',
+        title: 'Transferir',
+        type : 'basic',
+        icon : 'heroicons_outline:credit-card',
+        link : '/transfer'
+    },
+    {
+        id   : 'bills',
+        title: 'Pago de facturas',
+        type : 'basic',
+        icon : 'heroicons_outline:calculator',
+        link : '/pay-bills'
+    },
+    {
+        id   : 'services',
+        title: 'Pago de servicios',
+        type : 'basic',
+        icon : 'heroicons_outline:cash',
+        link : '/pay-services'
+    },
+    
 ];
 export const horizontalNavigation: FuseNavigationItem[] = [
     {
-        id   : 'example',
-        title: 'Example',
+        id   : 'account',
+        title: 'Mis cuentas',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/example'
-    }
+        link : '/account'
+    },
+    {
+        id   : 'historial',
+        title: 'Historial',
+        type : 'basic',
+        icon : 'heroicons_outline:clipboard',
+        link : '/historial'
+    },
+    {
+        id   : 'transfer',
+        title: 'Transferir',
+        type : 'basic',
+        icon : 'heroicons_outline:credit-card',
+        link : '/transfer'
+    },
+    {
+        id   : 'bills',
+        title: 'Pago de facturas',
+        type : 'basic',
+        icon : 'heroicons_outline:calculator',
+        link : '/pay-bills'
+    },
+    {
+        id   : 'services',
+        title: 'Pago de servicios',
+        type : 'basic',
+        icon : 'heroicons_outline:cash',
+        link : '/pay-services'
+    },
+    
 ];

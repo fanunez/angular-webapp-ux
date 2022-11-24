@@ -9,7 +9,7 @@
             <!-- Title -->
             <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Crear cuenta</div>
             <div class="flex items-baseline mt-0.5 font-medium">
-                <div>Ya tienes cuenta creada?</div>
+                <div>¿Ya tienes cuenta creada?</div>
                 <a
                     class="ml-1 text-primary-500 hover:underline"
                     [routerLink]="['/sign-in']">Iniciar sesión
@@ -55,7 +55,7 @@
                         Correo electrónico es requerido
                     </mat-error>
                     <mat-error *ngIf="signUpForm.get('email').hasError('email')">
-                        Por favor ingresa una dirección de correo válida
+                        Por favor, ingresa una dirección de correo válida
                     </mat-error>
                 </mat-form-field>
 
