@@ -17,9 +17,9 @@
                             src="../../../../assets/images/avatars/brian-hughes.jpg">
                     </div>
                     <div class="col">
-                        <b style="font-size:15px;">{{element.service}}</b>
+                        <b style="font-size:15px;">{{element.name_service}}</b>
                         <br>
-                        Fec. Venc: {{element.date}}
+                        Fec. Venc: {{element.billing_date}}/12/2022
                     </div>
                 </div>
               
@@ -35,7 +35,7 @@
             <!-- Weight Column -->
             <ng-container matColumnDef="Deuda">
               <th mat-header-cell *matHeaderCellDef> Deuda </th>
-              <td mat-cell *matCellDef="let element"> {{element.pay}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.price_service}} </td>
             </ng-container>
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

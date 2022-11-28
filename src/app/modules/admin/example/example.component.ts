@@ -1,18 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import axios from 'axios';
-
-export interface PeriodicElement {
-    service: string;
-    id: number;
-    pay: number;
-    date: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-    {id: 1, service: 'Aguas Andinas', pay: 25000, date: '07/12/2022'},
-    {id: 2, service: 'Enel', pay: 53200, date: '14/12/2022'},
-    {id: 3, service: 'WOM Movil', pay: 15700, date: '03/12/2022'}
-];
 
 @Component({
     selector     : 'example',
@@ -20,10 +7,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
     styleUrls    : ['./example.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class ExampleComponent
+export class ExampleComponent implements OnInit
 {
     displayedColumns: string[] = ['Servicio', 'Identificador', 'Deuda'];
-    dataSource = ELEMENT_DATA;
+    dataSource = [];
 
     /**
      * Constructor
@@ -33,21 +20,31 @@ export class ExampleComponent
     }
 
     async ngOnInit() {
-        this.getAllServices();
+        await this.getAllServices();
+        console.log( this.dataSource );
+        
     }
 
 
-    getAllServices() {
-        // get all credentials
-        // const axiosInstance = axios.create({
-        //     headers: {
-        //         "Access-Control-Allow-Origin": "*"
-        //     }
-        // });
+    async getAllServices() {
 
-        axios.get( 'http://localhost:8080/service/getall' )
+        await axios.get( 'http://localhost:8080/service/get-all-formatted' )
             .then( response => {
-                console.log( response.data );
+                this.dataSource = response.data;
+                
+                // for( let i = 0; i < response.data.length; i++ ) {
+                    
+                //     const requiredPayload = {
+                //         name_service: response.data[i].name_service,
+                //         id: response.data[i].id,
+                //         price_service: response.data[i].price_service,
+                //         date: response.data[i].date
+                //     }
+
+                //     this.dataSource.push( requiredPayload );
+                    
+                // }
+
             })
             .catch( error => {
                 console.log( error );
