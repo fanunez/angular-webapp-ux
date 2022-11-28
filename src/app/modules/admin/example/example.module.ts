@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { ExampleComponent } from 'app/modules/admin/example/example.component';
 import { MatTableModule } from '@angular/material/table'  
-import { DialogAnimationsExampleDialog } from './dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common'; 
 
 const exampleRoutes: Route[] = [
     {
@@ -17,11 +18,11 @@ const exampleRoutes: Route[] = [
     ],
     imports     : [
         RouterModule.forChild(exampleRoutes),
-        MatTableModule
+        MatTableModule,
+        MatDialogModule,
+        CommonModule
     ],
-    entryComponents: [
-        DialogAnimationsExampleDialog
-    ]
+    entryComponents: []
 })
 export class ExampleModule
 {
