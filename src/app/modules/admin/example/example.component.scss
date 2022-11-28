@@ -2,6 +2,31 @@ table {
     width: 100%;
 }
 
-mat-grid-tile {
-    background: lightblue;
-  }
+.mat-table{    
+    border-radius: 8px;
+    overflow:hidden !important;
+}
+
+.display-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-box {
+    width:70px; 
+    height:70px;
+    border-radius: 10px;
+}
+
+tr.mat-row {
+    height: 100px !important; 
+}
+
+tr.mat-header-row {
+    height: 80px !important;
+}
+
+th.mat-header-cell {
+    font-size: 18px !important;
+}

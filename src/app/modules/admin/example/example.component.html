@@ -10,16 +10,16 @@
               <th mat-header-cell *matHeaderCellDef> Servicio </th>
               <td mat-cell *matCellDef="let element">
                 
-                <div class="row">
+                <div class="row display-content">
                     <div class="col-auto">
-                        <img src="../../../../assets/images/avatars/brian-hughes.jpg" style="width:30px; height:30px;">
+                        <img
+                            class="img-box" 
+                            src="../../../../assets/images/avatars/brian-hughes.jpg">
                     </div>
                     <div class="col">
-                        <div class="row">
-                            <b style="font-size:15px;">{{element.service}}</b>
-                            <br>
-                            Fec. Venc: {{element.date}}
-                        </div>
+                        <b style="font-size:15px;">{{element.service}}</b>
+                        <br>
+                        Fec. Venc: {{element.date}}
                     </div>
                 </div>
               
