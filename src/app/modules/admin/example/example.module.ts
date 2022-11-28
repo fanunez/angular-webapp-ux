@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { ExampleComponent } from 'app/modules/admin/example/example.component';
-import { UnderConstructionComponent } from 'app/modules/admin/example/under-construction/under-construction.component';
+import { MatTableModule } from '@angular/material/table'  
 
 const exampleRoutes: Route[] = [
     {
@@ -15,7 +15,8 @@ const exampleRoutes: Route[] = [
         ExampleComponent
     ],
     imports     : [
-        RouterModule.forChild(exampleRoutes)
+        RouterModule.forChild(exampleRoutes),
+        MatTableModule
     ]
 })
 export class ExampleModule
