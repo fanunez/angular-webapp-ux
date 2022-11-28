@@ -19,7 +19,7 @@
                     <div class="col">
                         <b style="font-size:15px;">{{element.name_service}}</b>
                         <br>
-                        Fec. Venc: {{element.billing_date}}/12/2022
+                        Fec. Venc: {{element.billing_date}}
                     </div>
                 </div>
               
@@ -35,7 +35,16 @@
             <!-- Weight Column -->
             <ng-container matColumnDef="Deuda">
               <th mat-header-cell *matHeaderCellDef> Deuda </th>
-              <td mat-cell *matCellDef="let element"> {{element.price_service}} </td>
+              <td mat-cell *matCellDef="let element"> ${{element.price_service}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Pagar">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element" class="text-center"> 
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-success" (click)="openDialog()">Success</button>
+
+              </td>
             </ng-container>
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
