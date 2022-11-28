@@ -1,0 +1,90 @@
+.body{
+    background-color: #d0c9b4;
+    font-family: tahoma;
+    font-size: 12px;
+    color: white;
+    min-width: 599px;
+    background: transparent url(../../../../../assets/images/backgrounds/under-construction-bg.jpg) 0 0 no-repeat;
+    background-size: cover;
+    height: 100vh;
+    border-radius: 10px;
+}
+
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+a.aLink:hover {
+    text-decoration: uderline;
+}
+
+.wrap {
+    width: 599px;
+    margin: auto;
+}
+
+#header {
+    padding: 70px 0;
+}
+
+#header h1 {
+    font-family: tahoma;
+    text-align: center;
+    font-size: 18px;
+    position: relative;
+    width: 280px;
+    margin: auto;
+}
+
+#header h1::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: -25px;
+}
+
+#header h1::after {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    right: -25px;
+}
+
+#contents{
+    font-family: tahoma;
+    text-align: center;
+    color: white;
+    padding-bottom: 35px;
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: normal;
+    margin-top: -50px;
+}
+
+#contents h2 {
+    font-family: tahoma;
+    font-size: 80px;
+    line-height: 80px;
+    font-weight: 500;
+}
+
+
+.img {
+    position: relative;
+    top: -90px;
+}
+
+.percentage {
+    font-family: tahoma;
+    position: relative;
+    top: -180px;
+}

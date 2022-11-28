@@ -76,10 +76,10 @@ export const appRoutes: Route[] = [
         children   : [
             {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
             // change modules
-            {path: 'account', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
-            {path: 'historial', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
-            {path: 'transfer', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
-            {path: 'pay-bills', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
+            {path: 'account', loadChildren: () => import('app/modules/admin/example/under-construction/under-construction.module').then(m => m.UnderConstructionModule)},
+            {path: 'historial', loadChildren: () => import('app/modules/admin/example/under-construction/under-construction.module').then(m => m.UnderConstructionModule)},
+            {path: 'transfer', loadChildren: () => import('app/modules/admin/example/under-construction/under-construction.module').then(m => m.UnderConstructionModule)},
+            {path: 'pay-bills', loadChildren: () => import('app/modules/admin/example/under-construction/under-construction.module').then(m => m.UnderConstructionModule)},
             {path: 'pay-services', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
         ]
     }
