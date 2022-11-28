@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import axios from 'axios';
 
 export interface PeriodicElement {
     service: string;
@@ -29,6 +30,29 @@ export class ExampleComponent
      */
     constructor()
     {
+    }
+
+    async ngOnInit() {
+        this.getAllServices();
+    }
+
+
+    getAllServices() {
+        // get all credentials
+        // const axiosInstance = axios.create({
+        //     headers: {
+        //         "Access-Control-Allow-Origin": "*"
+        //     }
+        // });
+
+        axios.get( 'http://localhost:8080/service/getall' )
+            .then( response => {
+                console.log( response.data );
+            })
+            .catch( error => {
+                console.log( error );
+            })
+
     }
 
 
