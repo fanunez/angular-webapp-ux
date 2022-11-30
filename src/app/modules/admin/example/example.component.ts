@@ -90,7 +90,7 @@ export class NgbdModalContent {
             "type_account": 1,
             "number_account": "1357",
             "bank_account": "Banco de Crédito e Inversiones",
-            "balance": 250000
+            "balance": 800000
           },
           {
             "_id": "oi2nc027d",
@@ -105,14 +105,14 @@ export class NgbdModalContent {
             "_id": "uqi3g87d",
             "name_service": "Aguas Andinas",
             "type_service": "Agua Potable",
-            "billing_date": 24,
+            "billing_date": "24/12/2022",
             "price_service": 50000,
             "user_account": {
               "_id": "029nw0eixwxlask",
               "type_account": 1,
               "number_account": "1357",
               "bank_account": "Banco de Crédito e Inversiones",
-              "balance": 300000
+              "balance": 800000
             },
             "service_account": {
               "_id": "09e3nxew9com",
