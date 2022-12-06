@@ -2,7 +2,15 @@
 
     <!-- Main -->
     <div class="flex-auto p-6 sm:p-10">
-
+        <!-- add service -->
+        <div class="row row-position">
+          <button class="btn btn-success add-btn-style" (click)="openNewServiceModal()"> 
+            <mat-icon class="plus-btn"[svgIcon]="'heroicons_outline:plus'"></mat-icon>
+            Agregar servicio 
+          </button>
+        </div>
+        
+        <!-- table content -->
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
               
             <!-- Position Column -->
