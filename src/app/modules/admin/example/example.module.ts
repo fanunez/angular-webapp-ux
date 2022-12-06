@@ -4,6 +4,9 @@ import { ExampleComponent } from 'app/modules/admin/example/example.component';
 import { MatTableModule } from '@angular/material/table'  
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common'; 
+import { MatIconModule } from "@angular/material/icon";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { CreateServiceModule } from './dialog/create-service.module';
 
 const exampleRoutes: Route[] = [
     {
@@ -20,7 +23,11 @@ const exampleRoutes: Route[] = [
         RouterModule.forChild(exampleRoutes),
         MatTableModule,
         MatDialogModule,
-        CommonModule
+        MatIconModule,
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        // CreateServiceModule
     ],
     entryComponents: []
 })
