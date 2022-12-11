@@ -48,7 +48,6 @@ export class ExampleComponent
     openNewServiceModal() {
       const modalConfig: NgbModalOptions = {
         windowClass: 'info-modal-sm',
-        size: 'sm',
         ariaLabelledBy: 'info-modal',
         centered: true
       };

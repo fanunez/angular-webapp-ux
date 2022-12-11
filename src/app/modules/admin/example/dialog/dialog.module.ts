@@ -21,10 +21,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     ],
     providers: [
         NgbActiveModal
-    ],
-    // exports : [
-    //     DialogCreateComponent
-    // ]
+    ]
 })
 export class DialogModule
 {

@@ -1,53 +1,101 @@
-<div>
-
+<div class="modal-box">
     <div class="modal-header">
-        <h4 class="modal-title">Agregar un nuevo servicio</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="_activeModal.dismiss('Cross click')"></button>
-      </div>
-      <div class="modal-body">
-    
-        <form>
-          <!-- Name service -->
-          <div class="form-group row">
-            <label for="inputEmail3" class="row col-form-label">Nombre del servicio</label>
-            <div class="row">
-              <!-- <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="favoriteColor"> -->
-              <input type="text" class="form-control" id="inputEmail3">
-            </div>
-          </div>
-          <!-- Service type -->
-          <div class="form-group row">
-            <label for="inputEmail3" class="row col-form-label">Tipo de servicio</label>
-            <div class="row">
-              <input type="text" class="form-control" id="inputEmail3">
-            </div>
-          </div>
-          <!-- Billing date -->
-          <div class="form-group row">
-            <label for="inputEmail3" class="row col-form-label">Día de cobro</label>
-            <div class="row">
-              <input type="number" class="form-control" id="inputEmail3">
-            </div>
-          </div>
-          <!-- Price service -->
-          <div class="form-group row">
-            <label for="inputEmail3" class="row col-form-label">Precio del servicio</label>
-            <div class="row">
-              <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
-            </div>
-          </div>
-    
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary">Sign in</button>
-            </div>
-          </div>
-        </form>
-    
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" (click)="createService()">Agregar servicio</button>
-        <button type="button" class="btn btn-danger" (click)="_activeModal.close('Close click')">Cancelar</button>
-      </div>
+      <h4 class="modal-title">Agregar un nuevo servicio</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="_activeModal.dismiss('Cross click')"></button>
+    </div>
 
+    <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+      <!-- Name service -->
+      <div class="form-group row">
+        <label for="serviceName" class="row col-form-label">Nombre del servicio</label>
+        <div class="row">
+          <input formControlName="serviceName"
+                  class="form-control"
+                  type="text" 
+                  id="serviceName">
+        </div>
+        <div *ngIf="serviceForm.controls.serviceName.errors && submitted || 
+                    !serviceForm.controls.serviceName.value && serviceForm.controls.serviceName.touched"
+              class="text-danger pl-0">
+          Debe ingresar un nombre de servicio <br>
+          <b>Ejemplo: Agua SMAPA</b>
+        </div>
+      </div>
+      <!-- Service type -->
+      <div class="form-group row">
+        <label for="account" class="row col-form-label">Cuenta</label>
+        <div class="row">
+          <input formControlName="account"
+                  type="text" 
+                  class="form-control" 
+                  id="account">
+        </div>
+        <div *ngIf="serviceForm.controls.account.errors && submitted || 
+                    !serviceForm.controls.account.value && serviceForm.controls.account.touched"
+              class="text-danger pl-0">
+          Debe ingresar una cuenta válida
+        </div>
+      </div>
+      <!-- Select type -->
+      <div class="form-group row">
+        <label for="inputServiceType" class="row col-form-label">Tipo de servicio</label>
+        <div class="row">
+          <select formControlName="inputServiceType"
+                  class="form-control" 
+                  id="inputServiceType">
+            <option value="" selected>Seleccione una opción</option>
+            <option value="Telefonía e Internet">Telefonía e Internet</option>
+            <option value="Agua potable">Agua potable</option>
+            <option value="Electricidad">Electricidad</option>
+            <option value="Internet (solo)">Internet (solo)</option>
+          </select>
+        </div>
+        <div *ngIf="serviceForm.controls.inputServiceType.errors && submitted || 
+                    !serviceForm.controls.inputServiceType.value && serviceForm.controls.inputServiceType.touched"
+              class="text-danger pl-0">
+          Debe seleccionar una opción
+        </div>
+      </div>
+      <!-- Billing date -->
+      <div class="form-group row">
+        <label for="billingDate" class="row col-form-label">Día de cobro</label>
+        <div class="row">
+          <input formControlName="billingDate" 
+                  type="number" 
+                  class="form-control" 
+                  id="billingDate">
+        </div>
+        <div *ngIf="serviceForm.controls.billingDate.errors && submitted || 
+                    !serviceForm.controls.billingDate.value && serviceForm.controls.billingDate.touched"
+              class="text-danger pl-0">
+          Debe ingresar un día de cobro (será utilizado mensualmente)
+        </div>
+      </div>
+      <!-- Price service -->
+      <div class="form-group row">
+        <label for="servicePrice" class="row col-form-label">Precio del servicio</label>
+        <div class="row">
+          <input formControlName="servicePrice"
+                  type="number" 
+                  class="form-control" 
+                  id="servicePrice"
+                  aria-label="Amount (to the nearest dollar)">
+        </div>
+        <div *ngIf="serviceForm.controls.servicePrice.errors && submitted || 
+                    !serviceForm.controls.servicePrice.value && serviceForm.controls.servicePrice.touched"
+              class="text-danger pl-0">
+          Debe ingresar un precio para el servicio <br>
+          <b>Ejemplo: 50000</b>
+        </div>
+      </div>
+      
+      <div class="modal-footer form-group row mt-4">
+        <div class="col footer-position">
+          <button type="button" class="btn btn-size btn-success mr-4" (click)="onSubmit()">Agregar servicio</button>
+          <button type="button" class="btn btn-size btn-danger" (click)="_activeModal.close('Close click')">Cancelar</button>
+        </div>
+      </div>
+      
+    </form>
+    
 </div>

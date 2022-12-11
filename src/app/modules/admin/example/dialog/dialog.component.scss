@@ -1,0 +1,33 @@
+
+.footer-position {
+    display: flex;
+    justify-content: end;
+}
+
+.btn-size {
+    width: 145px !important;
+}
+
+
+input.ng-invalid.ng-touched {
+    border: red 2px solid;
+}
+
+select.ng-invalid.ng-touched {
+    border: red 2px solid;
+}
+
+input.ng-valid.ng-touched {
+    border: #4CAF50 2px solid;
+}
+
+select.ng-valid.ng-touched {
+    border: #4CAF50 2px solid;
+}
+
+
+
+
+
+
+
