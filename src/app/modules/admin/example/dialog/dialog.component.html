@@ -4,7 +4,7 @@
       <button type="button" class="btn-close" aria-label="Close" (click)="_activeModal.dismiss('Cross click')"></button>
     </div>
 
-    <form [formGroup]="serviceForm" (ngSubmit)="onSubmit( serviceForm.value )">
+    <form [formGroup]="serviceForm" (ngSubmit)="onSubmit( )">
       <!-- Name service -->
       <div class="form-group row">
         <label for="serviceName" class="row col-form-label">Nombre del servicio</label>
@@ -105,13 +105,13 @@
                     !serviceForm.controls.servicePrice.value && serviceForm.controls.servicePrice.touched"
               class="text-danger pl-0">
           Debe ingresar un precio para el servicio <br>
-          <b>Ejemplo: 50000</b>
+          <b>Ejemplo: 12000</b>
         </div>
       </div>
       
       <div class="modal-footer form-group row mt-4">
         <div class="col footer-position">
-          <button type="button" class="btn btn-size btn-success mr-4" (click)="onSubmit( serviceForm.value )">Agregar servicio</button>
+          <button type="button" class="btn btn-size btn-success mr-4" (click)="onSubmit( )">Agregar servicio</button>
           <button type="button" class="btn btn-size btn-danger" (click)="_activeModal.close('Close click')">Cancelar</button>
         </div>
       </div>
