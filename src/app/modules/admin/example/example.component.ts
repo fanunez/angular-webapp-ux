@@ -104,105 +104,39 @@ export class NgbdModalContent {
 	constructor(public activeModal: NgbActiveModal, private modalService: NgbModal) {}
 
   payBill() {
-    // const payload = {
-    //     "rut": "12.345.678-9",
-    //     "name": "Luciano",
-    //     "email": "mail@mail.com",
-    //     "password": "1234",
-    //     "accounts": [
-    //       {
-    //         "_id": "029nw0eixwxlask",
-    //         "type_account": 1,
-    //         "number_account": "1357",
-    //         "bank_account": "Banco de Crédito e Inversiones",
-    //         "balance": 250000
-    //       },
-    //       {
-    //         "_id": "oi2nc027d",
-    //         "type_account": 1,
-    //         "number_account": "1234",
-    //         "bank_account": "Banco de Chile",
-    //         "balance": 500000
-    //       }
-    //     ],
-    //     "services": [
-    //       {
-    //         "_id": "uqi3g87d",
-    //         "name_service": "Aguas Andinas",
-    //         "type_service": "Agua Potable",
-    //         "billing_date": 24,
-    //         "price_service": 50000,
-    //         "user_account": {
-    //           "_id": "029nw0eixwxlask",
-    //           "type_account": 1,
-    //           "number_account": "1357",
-    //           "bank_account": "Banco de Crédito e Inversiones",
-    //           "balance": 300000
-    //         },
-    //         "service_account": {
-    //           "_id": "09e3nxew9com",
-    //           "type_account": 2,
-    //           "number_account": "5678",
-    //           "bank_account": "Banco Estado",
-    //           "balance": 700000
-    //         }
-    //       }
-    //     ],
-    //     "vouchers": [
-    //       {
-    //         "_id": "ID_Voucher",
-    //         "amount": 50000,
-    //         "transaction_date": "2022/11/24",
-    //         "account_source": "1357",
-    //         "account_destination": "5678"
-    //       }
-    //     ]
-    // }
-    // axios.put( 'http://localhost:8080/pay/automatic', payload )
-    //   .then( (response) => {
-    //     console.log( response );
-    //     const modalConfig: NgbModalOptions = {
-    //       windowClass: 'info-modal-sm',
-    //       ariaLabelledBy: 'info-modal',
-    //       centered: true
-    //     };
-    //     this.modalService.open( DialogResultComponent, modalConfig );
-    //   })
-    //   .catch( error => {
-    //     console.log( error );
-    //     const modalConfig: NgbModalOptions = {
-    //       windowClass: 'info-modal-sm',
-    //       ariaLabelledBy: 'info-modal',
-    //       centered: true
-    //     };
-    //     this.modalService.open( DialogWrongResultComponent, modalConfig );
-    //   });
 
-    const payload = {
-      id: "1",
-      balance: this.balance - this.price_service
-    }
-
-    axios.put( 'http://localhost:8080/balance/update', payload )
-      .then( (response) => {
-        console.log( response );
-        const modalConfig: NgbModalOptions = {
-          windowClass: 'info-modal-sm',
-          ariaLabelledBy: 'info-modal',
-          centered: true
-        };
-        this.modalService.open( DialogResultComponent, modalConfig );
-      })
-      .catch( error => {
-        console.log( error );
+    if( this.balance - this.price_service > 0 ) {
+      const payload = {
+        id: "1",
+        balance: this.balance - this.price_service
+      }
+  
+      axios.put( 'http://localhost:8080/balance/update', payload )
+        .then( (response) => {
+          console.log( response );
+          const modalConfig: NgbModalOptions = {
+            windowClass: 'info-modal-sm',
+            ariaLabelledBy: 'info-modal',
+            centered: true
+          };
+          this.modalService.open( DialogResultComponent, modalConfig );
+        })
+        .catch( error => {
+          console.log( error );
+        });
+        
+      } else {
+        
         const modalConfig: NgbModalOptions = {
           windowClass: 'info-modal-sm',
           ariaLabelledBy: 'info-modal',
           centered: true
         };
         this.modalService.open( DialogWrongResultComponent, modalConfig );
-      });
-      
+
+
+    }
+
     this.activeModal.close();
 
   }
