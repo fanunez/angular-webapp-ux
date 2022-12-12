@@ -1,5 +1,8 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal, NgbModalOptions, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
+import { DialogCreateComponent } from './dialog/dialog.component';
+import { DialogResultComponent } from './dialog-result/dialog-result.component';
 
 import axios from 'axios';
 
@@ -13,6 +16,8 @@ export class ExampleComponent
 {
     displayedColumns: string[] = ['Servicio', 'Identificador', 'Deuda', 'Pagar'];
     dataSource = [];
+
+    public stopEditingModal: NgbModalRef;
 
     /**
      * Constructor
@@ -35,22 +40,23 @@ export class ExampleComponent
             })
     }
 
-
-    payingToday() {
-    }
-
-
     open( name: string, pay: string ) {
       const modalRef = this.modalService.open(NgbdModalContent);
       modalRef.componentInstance.name_service = name;
       modalRef.componentInstance.price_service = pay;
     }
 
-
     openNewServiceModal() {
-      this.modalService.open(NgbdModalCreateService);
-    }
+      const modalConfig: NgbModalOptions = {
+        windowClass: 'info-modal-sm',
+        ariaLabelledBy: 'info-modal',
+        centered: true
+      };
 
+      this.modalService.open( DialogCreateComponent, modalConfig );
+
+
+    }
 
 }
 
@@ -79,7 +85,7 @@ export class NgbdModalContent {
   showPayBill = false;
   showPayLoader = true;
 
-	constructor(public activeModal: NgbActiveModal) {}
+	constructor(public activeModal: NgbActiveModal, private modalService: NgbModal) {}
 
   payBill() {
     const payload = {
@@ -142,95 +148,17 @@ export class NgbdModalContent {
       })
       .catch( error => console.log( error ));
     
+    const modalConfig: NgbModalOptions = {
+      windowClass: 'info-modal-sm',
+      ariaLabelledBy: 'info-modal',
+      centered: true
+    };
+      
+    this.modalService.open( DialogResultComponent, modalConfig );
+    
+
     this.activeModal.close();
 
   }
 
 }
-
-
-@Component({
-	selector: 'ngbd-modal-create-service',
-	template: `
-  <div class="modal-header">
-    <h4 class="modal-title">Agregar un nuevo servicio</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-
-    <form>
-      <!-- Name service -->
-      <div class="form-group row">
-        <label for="inputEmail3" class="row col-form-label">Nombre del servicio</label>
-        <div class="row">
-          <!-- <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="favoriteColor"> -->
-          <input type="text" class="form-control" id="inputEmail3">
-        </div>
-      </div>
-      <!-- Service type -->
-      <div class="form-group row">
-        <label for="inputEmail3" class="row col-form-label">Tipo de servicio</label>
-        <div class="row">
-          <input type="text" class="form-control" id="inputEmail3">
-        </div>
-      </div>
-      <!-- Billing date -->
-      <div class="form-group row">
-        <label for="inputEmail3" class="row col-form-label">Día de cobro</label>
-        <div class="row">
-          <input type="number" class="form-control" id="inputEmail3">
-        </div>
-      </div>
-      <!-- Price service -->
-      <div class="form-group row">
-        <label for="inputEmail3" class="row col-form-label">Precio del servicio</label>
-        <div class="row">
-          <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-      </div>
-    </form>
-
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="createService()">Agregar servicio</button>
-    <button type="button" class="btn btn-danger" (click)="activeModal.close('Close click')">Cancelar</button>
-  </div>
-	`,
-})
-
-export class NgbdModalCreateService {
-
-  favoriteColor = '';
-
-	constructor(public activeModal: NgbActiveModal) {}
-
-  createService() {
-
-    console.log( )
-
-    // const payload = {
-    //   name_service: 'name',
-    //   type_service: '',
-    //   billing_date: '',
-    //   price_service: '',
-    //   user_account: '',
-    //   service_account: ''
-    // }
-
-    // axios.post( 'http://localhost:8080/service/create', payload )
-    //   .then( response => {
-    //     console.log( response.data );
-    //   })
-    //   .catch( error => {
-    //     console.log( error );
-    //   })
-  }
-
-}
-

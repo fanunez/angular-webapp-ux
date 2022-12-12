@@ -6,7 +6,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common'; 
 import { MatIconModule } from "@angular/material/icon";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { CreateServiceModule } from './dialog/create-service.module';
+import { DialogModule } from './dialog/dialog.module';
+import { DialogCreateComponent } from './dialog/dialog.component'
 
 const exampleRoutes: Route[] = [
     {
@@ -27,9 +28,9 @@ const exampleRoutes: Route[] = [
         CommonModule,
         ReactiveFormsModule,
         FormsModule,
-        // CreateServiceModule
+        DialogModule
     ],
-    entryComponents: []
+    entryComponents: [ DialogCreateComponent ]
 })
 export class ExampleModule
 {
