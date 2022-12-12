@@ -10,6 +10,7 @@ import axios from 'axios';
 @Component({
 	selector: 'dialog-create-service',
 	templateUrl: './dialog.component.html',
+    styleUrls: ['./dialog.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 
@@ -27,8 +28,8 @@ export class DialogCreateComponent {
             inputBankType: new FormControl( '', Validators.required ),
             account: new FormControl( null, Validators.required ),
             inputServiceType: new FormControl( '', Validators.required ),
-            billingDate: new FormControl( '', Validators.required ),
-            servicePrice: new FormControl( null, Validators.required ),
+            billingDate: new FormControl( null, Validators.required ),
+            servicePrice: new FormControl( null, Validators.required )
         })
     }
 
@@ -36,23 +37,22 @@ export class DialogCreateComponent {
         this._activeModal.dismiss();
     }
 
-    onSubmit( data ) {
+    onSubmit() {
         this.submitted = true;
         console.log( this.serviceForm );
-        // this.submitted = false;
 
         const currentDate = new Date();
-        if( currentDate.getDate() - data.billingDate > 0 ) {
-            data.billingDate = data.billingDate + '/12/2022';
+        if( currentDate.getDate() - this.serviceForm.value.billingDate > 0 ) {
+            this.serviceForm.value.billingDate = this.serviceForm.value.billingDate + '/12/2022';
         } else {
-            data.billingDate = data.billingDate + '/02/2023';
+            this.serviceForm.value.billingDate = this.serviceForm.value.billingDate + '/02/2023';
         }
 
         const payload = {
-            name_service: data.serviceName,
-            type_service: data.inputServiceType,
-            billing_date: data.billingDate,
-            price_service: data.servicePrice,
+            name_service: this.serviceForm.value.serviceName,
+            type_service: this.serviceForm.value.inputServiceType,
+            billing_date: this.serviceForm.value.billingDate,
+            price_service: this.serviceForm.value.servicePrice,
             user_account: null,
             service_account: {
                 type_account: 2,
@@ -82,7 +82,7 @@ export class DialogCreateComponent {
         this.modalService.open( DialogResultComponent, modalConfig );
 
         this._activeModal.close();
-
+        this.submitted = false;
     }
 
 }
