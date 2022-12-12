@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal, NgbModalOptions, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 import { DialogCreateComponent } from './dialog/dialog.component';
+import { DialogResultComponent } from './dialog-result/dialog-result.component';
 
 import axios from 'axios';
 
@@ -51,11 +52,11 @@ export class ExampleComponent
         ariaLabelledBy: 'info-modal',
         centered: true
       };
-      
+
       this.modalService.open( DialogCreateComponent, modalConfig );
 
-    }
 
+    }
 
 }
 

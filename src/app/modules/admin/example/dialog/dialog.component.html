@@ -4,7 +4,7 @@
       <button type="button" class="btn-close" aria-label="Close" (click)="_activeModal.dismiss('Cross click')"></button>
     </div>
 
-    <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="serviceForm" (ngSubmit)="onSubmit( serviceForm.value )">
       <!-- Name service -->
       <div class="form-group row">
         <label for="serviceName" class="row col-form-label">Nombre del servicio</label>
@@ -21,9 +21,29 @@
           <b>Ejemplo: Agua SMAPA</b>
         </div>
       </div>
-      <!-- Service type -->
+      <!-- Account option -->
       <div class="form-group row">
-        <label for="account" class="row col-form-label">Cuenta</label>
+        <label for="inputBankType" class="row col-form-label">Tipo de banco</label>
+        <div class="row">
+          <select formControlName="inputBankType"
+                  class="form-control" 
+                  id="inputBankType">
+            <option value="" selected>Seleccione una opción</option>
+            <option value="Banco Estado">Banco Estado</option>
+            <option value="Banco Chile">Banco Chile</option>
+            <option value="Banco Santander">Banco Santander</option>
+            <option value="BCI">BCI</option>
+          </select>
+        </div>
+        <div *ngIf="serviceForm.controls.inputBankType.errors && submitted || 
+                    !serviceForm.controls.inputBankType.value && serviceForm.controls.inputBankType.touched"
+              class="text-danger pl-0">
+          Debe seleccionar una opción
+        </div>
+      </div>
+      <!-- Account number -->
+      <div class="form-group row">
+        <label for="account" class="row col-form-label">Número de cuenta</label>
         <div class="row">
           <input formControlName="account"
                   type="text" 
@@ -91,7 +111,7 @@
       
       <div class="modal-footer form-group row mt-4">
         <div class="col footer-position">
-          <button type="button" class="btn btn-size btn-success mr-4" (click)="onSubmit()">Agregar servicio</button>
+          <button type="button" class="btn btn-size btn-success mr-4" (click)="onSubmit( serviceForm.value )">Agregar servicio</button>
           <button type="button" class="btn btn-size btn-danger" (click)="_activeModal.close('Close click')">Cancelar</button>
         </div>
       </div>
