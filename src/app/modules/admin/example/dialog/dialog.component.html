@@ -64,10 +64,10 @@
                   class="form-control" 
                   id="inputServiceType">
             <option value="" selected>Seleccione una opción</option>
-            <option value="Telefonía e Internet">Telefonía e Internet</option>
-            <option value="Agua potable">Agua potable</option>
-            <option value="Electricidad">Electricidad</option>
-            <option value="Internet (solo)">Internet (solo)</option>
+            <option value="internet_phone">Telefonía e Internet</option>
+            <option value="water">Agua potable</option>
+            <option value="energy">Electricidad</option>
+            <option value="internet">Internet (solo)</option>
           </select>
         </div>
         <div *ngIf="serviceForm.controls.inputServiceType.errors && submitted || 

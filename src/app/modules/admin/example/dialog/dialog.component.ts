@@ -74,7 +74,8 @@ export class DialogCreateComponent {
           
         this.modalService.open( DialogResultComponent, modalConfig );
 
-        this._activeModal.close()
+        this._activeModal.close();
+
     }
 
 }

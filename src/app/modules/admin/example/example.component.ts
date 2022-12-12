@@ -85,7 +85,7 @@ export class NgbdModalContent {
   showPayBill = false;
   showPayLoader = true;
 
-	constructor(public activeModal: NgbActiveModal) {}
+	constructor(public activeModal: NgbActiveModal, private modalService: NgbModal) {}
 
   payBill() {
     const payload = {
@@ -148,6 +148,15 @@ export class NgbdModalContent {
       })
       .catch( error => console.log( error ));
     
+    const modalConfig: NgbModalOptions = {
+      windowClass: 'info-modal-sm',
+      ariaLabelledBy: 'info-modal',
+      centered: true
+    };
+      
+    this.modalService.open( DialogResultComponent, modalConfig );
+    
+
     this.activeModal.close();
 
   }
