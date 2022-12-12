@@ -3,6 +3,7 @@ import { NgbActiveModal, NgbModal, NgbModalOptions, NgbModalRef } from '@ng-boot
 
 import { DialogCreateComponent } from './dialog/dialog.component';
 import { DialogResultComponent } from './dialog-result/dialog-result.component';
+import { DialogWrongResultComponent } from './dialog-wrong/dialog-wrong.component';
 
 import axios from 'axios';
 
@@ -16,6 +17,7 @@ export class ExampleComponent
 {
     displayedColumns: string[] = ['Servicio', 'Identificador', 'Deuda', 'Pagar'];
     dataSource = [];
+    balance= 0;
 
     public stopEditingModal: NgbModalRef;
 
@@ -27,6 +29,7 @@ export class ExampleComponent
 
     async ngOnInit() {
         await this.getAllServices();
+        await this.getBalance();
     }
 
 
@@ -34,16 +37,28 @@ export class ExampleComponent
         await axios.get( 'http://localhost:8080/service/get-all-formatted' )
             .then( response => {
               this.dataSource = response.data;
+              console.log( this.dataSource );
             })
             .catch( error => {
                 console.log( error );
             })
     }
 
+    async getBalance() {
+      await axios.get( 'http://localhost:8080/balance/getall' )
+        .then( response => {
+          this.balance = response.data[0].balance;
+        })
+        .catch( error => {
+          console.log( error );
+        })
+    }
+
     open( name: string, pay: string ) {
       const modalRef = this.modalService.open(NgbdModalContent);
       modalRef.componentInstance.name_service = name;
       modalRef.componentInstance.price_service = pay;
+      modalRef.componentInstance.balance = this.balance;
     }
 
     openNewServiceModal() {
@@ -81,6 +96,7 @@ export class ExampleComponent
 export class NgbdModalContent {
 	@Input() name_service;
   @Input() price_service;
+  @Input() balance;
 
   showPayBill = false;
   showPayLoader = true;
@@ -88,75 +104,105 @@ export class NgbdModalContent {
 	constructor(public activeModal: NgbActiveModal, private modalService: NgbModal) {}
 
   payBill() {
-    const payload = {
-        "rut": "12.345.678-9",
-        "name": "Luciano",
-        "email": "mail@mail.com",
-        "password": "1234",
-        "accounts": [
-          {
-            "_id": "029nw0eixwxlask",
-            "type_account": 1,
-            "number_account": "1357",
-            "bank_account": "Banco de Crédito e Inversiones",
-            "balance": 250000
-          },
-          {
-            "_id": "oi2nc027d",
-            "type_account": 1,
-            "number_account": "1234",
-            "bank_account": "Banco de Chile",
-            "balance": 500000
-          }
-        ],
-        "services": [
-          {
-            "_id": "uqi3g87d",
-            "name_service": "Aguas Andinas",
-            "type_service": "Agua Potable",
-            "billing_date": 24,
-            "price_service": 50000,
-            "user_account": {
-              "_id": "029nw0eixwxlask",
-              "type_account": 1,
-              "number_account": "1357",
-              "bank_account": "Banco de Crédito e Inversiones",
-              "balance": 300000
-            },
-            "service_account": {
-              "_id": "09e3nxew9com",
-              "type_account": 2,
-              "number_account": "5678",
-              "bank_account": "Banco Estado",
-              "balance": 700000
-            }
-          }
-        ],
-        "vouchers": [
-          {
-            "_id": "ID_Voucher",
-            "amount": 50000,
-            "transaction_date": "2022/11/24",
-            "account_source": "1357",
-            "account_destination": "5678"
-          }
-        ]
-    }
-    axios.put( 'http://localhost:8080/pay/automatic', payload )
-      .then( (response) => {
-        console.log( response )
-      })
-      .catch( error => console.log( error ));
-    
-    const modalConfig: NgbModalOptions = {
-      windowClass: 'info-modal-sm',
-      ariaLabelledBy: 'info-modal',
-      centered: true
-    };
-      
-    this.modalService.open( DialogResultComponent, modalConfig );
-    
+    // const payload = {
+    //     "rut": "12.345.678-9",
+    //     "name": "Luciano",
+    //     "email": "mail@mail.com",
+    //     "password": "1234",
+    //     "accounts": [
+    //       {
+    //         "_id": "029nw0eixwxlask",
+    //         "type_account": 1,
+    //         "number_account": "1357",
+    //         "bank_account": "Banco de Crédito e Inversiones",
+    //         "balance": 250000
+    //       },
+    //       {
+    //         "_id": "oi2nc027d",
+    //         "type_account": 1,
+    //         "number_account": "1234",
+    //         "bank_account": "Banco de Chile",
+    //         "balance": 500000
+    //       }
+    //     ],
+    //     "services": [
+    //       {
+    //         "_id": "uqi3g87d",
+    //         "name_service": "Aguas Andinas",
+    //         "type_service": "Agua Potable",
+    //         "billing_date": 24,
+    //         "price_service": 50000,
+    //         "user_account": {
+    //           "_id": "029nw0eixwxlask",
+    //           "type_account": 1,
+    //           "number_account": "1357",
+    //           "bank_account": "Banco de Crédito e Inversiones",
+    //           "balance": 300000
+    //         },
+    //         "service_account": {
+    //           "_id": "09e3nxew9com",
+    //           "type_account": 2,
+    //           "number_account": "5678",
+    //           "bank_account": "Banco Estado",
+    //           "balance": 700000
+    //         }
+    //       }
+    //     ],
+    //     "vouchers": [
+    //       {
+    //         "_id": "ID_Voucher",
+    //         "amount": 50000,
+    //         "transaction_date": "2022/11/24",
+    //         "account_source": "1357",
+    //         "account_destination": "5678"
+    //       }
+    //     ]
+    // }
+    // axios.put( 'http://localhost:8080/pay/automatic', payload )
+    //   .then( (response) => {
+    //     console.log( response );
+    //     const modalConfig: NgbModalOptions = {
+    //       windowClass: 'info-modal-sm',
+    //       ariaLabelledBy: 'info-modal',
+    //       centered: true
+    //     };
+    //     this.modalService.open( DialogResultComponent, modalConfig );
+    //   })
+    //   .catch( error => {
+    //     console.log( error );
+    //     const modalConfig: NgbModalOptions = {
+    //       windowClass: 'info-modal-sm',
+    //       ariaLabelledBy: 'info-modal',
+    //       centered: true
+    //     };
+    //     this.modalService.open( DialogWrongResultComponent, modalConfig );
+    //   });
 
+    const payload = {
+      id: "1",
+      balance: this.balance - this.price_service
+    }
+
+    axios.put( 'http://localhost:8080/balance/update', payload )
+      .then( (response) => {
+        console.log( response );
+        const modalConfig: NgbModalOptions = {
+          windowClass: 'info-modal-sm',
+          ariaLabelledBy: 'info-modal',
+          centered: true
+        };
+        this.modalService.open( DialogResultComponent, modalConfig );
+      })
+      .catch( error => {
+        console.log( error );
+        const modalConfig: NgbModalOptions = {
+          windowClass: 'info-modal-sm',
+          ariaLabelledBy: 'info-modal',
+          centered: true
+        };
+        this.modalService.open( DialogWrongResultComponent, modalConfig );
+      });
+      
     this.activeModal.close();
 
   }

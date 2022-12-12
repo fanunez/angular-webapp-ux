@@ -34,7 +34,8 @@ th.mat-header-cell {
 .row-position {
     display: flex; 
     justify-content: end;
-    padding-right: 10px;
+    padding-right: 11px;
+    margin-top: 20px;
 }
 
 .add-btn-style {
@@ -55,4 +56,27 @@ th.mat-header-cell {
 
 .form-group {
     padding-left: 25px !important;
+}
+
+.account-container {
+    box-shadow: 0px 3px 5px 4px rgba(0,0,0,0.08);
+    overflow:hidden !important;
+    border-radius: 8px;
+    background: white;
+    height: 60px;
+    // display: flex;
+    // align-items: center;
+}
+
+.header-text {
+    font-size: 20px;
+    color: #1E293B;
+    font-family: Roboto, "Helvetica Neue";
+    padding-left: 24px;
+}
+
+.minor-text {
+    font-size: 13px;
+    color: #63748B;
+    font-family: Roboto, "Helvetica Neue";
 }
