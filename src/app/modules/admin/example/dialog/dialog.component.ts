@@ -41,10 +41,17 @@ export class DialogCreateComponent {
         console.log( this.serviceForm );
         // this.submitted = false;
 
+        const currentDate = new Date();
+        if( currentDate.getDate() - data.billingDate > 0 ) {
+            data.billingDate = data.billingDate + '/12/2022';
+        } else {
+            data.billingDate = data.billingDate + '/02/2023';
+        }
+
         const payload = {
             name_service: data.serviceName,
             type_service: data.inputServiceType,
-            billing_date: data.billingDate+'/01/2023',
+            billing_date: data.billingDate,
             price_service: data.servicePrice,
             user_account: null,
             service_account: {
