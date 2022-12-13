@@ -11,7 +11,7 @@
         <div class="col-3">
           <div class="row">
             <div class="col-12 header-text">
-              <b>{{ this.balance | currency:'CLP ': true:'2.3-3'}}</b>
+              <b>{{ this.balance | currency:'CLP $': true:'2.3-3'}}</b>
             </div>
             <div class="col-12 minor-text">
               Saldo disponible
@@ -53,7 +53,7 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="Deuda">
           <th mat-header-cell *matHeaderCellDef> Deuda </th>
-          <td mat-cell *matCellDef="let element"> {{element.price_service | currency:'CLP ': true:'2.3'}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.price_service | currency:'CLP $': true:'2.3'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Pagar">
